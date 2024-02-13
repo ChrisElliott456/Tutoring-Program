@@ -1,6 +1,9 @@
 package com.school.TutoringProgram.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Teacher {
@@ -14,6 +17,9 @@ public class Teacher {
     private String lastName;
     private String subject;
     private String gender;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "teacher")
+    @JsonIgnore
+    private List<Student> students;
 
     public Teacher() {
     }

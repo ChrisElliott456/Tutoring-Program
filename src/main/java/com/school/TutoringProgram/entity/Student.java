@@ -14,15 +14,19 @@ public class Student {
     private String lastName;
     private int age;
     private String gender;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher")
+    private Teacher teacher;
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, int age, String gender) {
+    public Student(String firstName, String lastName, int age, String gender, Teacher teacher) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
+        this.teacher = teacher;
     }
 
     public Long getId() {

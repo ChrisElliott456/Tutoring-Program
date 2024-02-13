@@ -1,6 +1,7 @@
 package com.school.TutoringProgram.service;
 
 import com.school.TutoringProgram.entity.Teacher;
+import com.school.TutoringProgram.exception.ResourceNotFoundException;
 import com.school.TutoringProgram.repository.TeacherRepository;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,7 @@ public class TeacherServiceImpl implements TeacherService{
     @Override
     public Teacher getTeacherById(Long id) {
         return teacherRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Could not find teacher id " + id + "."));
+                .orElseThrow(()-> new ResourceNotFoundException("Teacher with id " + id + " could not be found."));
     }
 
     @Override
